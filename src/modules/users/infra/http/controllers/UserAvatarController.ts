@@ -10,14 +10,7 @@ export default class UserAvatarController {
       user_id: request.user.id,
       avatarFilename: request.file.filename,
     });
-    const userWithoutPassword = {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      created_at: user.created_at,
-      updated_at: user.updated_at,
-    };
 
-    return response.json(userWithoutPassword);
+    return response.json(user);
   }
 }
