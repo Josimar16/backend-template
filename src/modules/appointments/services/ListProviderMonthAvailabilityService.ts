@@ -14,12 +14,10 @@ type IResponse = Array<{
 
 @injectable()
 class ListProviderMonthAvailabilityService {
-  constructor(
-
-  ) { }
+  constructor() {}
 
   public async execute({ user_id, year, month }: IRequest): Promise<IResponse> {
-    return [{ day: 1, available: false }]
+    return [{ day: 1, available: false }];
   }
 }
 
