@@ -4,7 +4,7 @@ import ListProviderMonthAvailabilityService from './ListProviderMonthAvailabilit
 let fakeAppointmentsRepository: FakeAppointmentsRepository;
 let listProviderMonthAvailability: ListProviderMonthAvailabilityService;
 
-describe('ListProviders', () => {
+describe('ListProviderMonthAvailability', () => {
   beforeEach(() => {
     fakeAppointmentsRepository = new FakeAppointmentsRepository();
     listProviderMonthAvailability = new ListProviderMonthAvailabilityService(
@@ -20,12 +20,52 @@ describe('ListProviders', () => {
 
     await fakeAppointmentsRepository.create({
       provider_id: 'user',
+      date: new Date(2020, 11, 27, 9, 0, 0),
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
       date: new Date(2020, 11, 27, 10, 0, 0),
     });
 
     await fakeAppointmentsRepository.create({
       provider_id: 'user',
-      date: new Date(2020, 11, 28, 8, 0, 0),
+      date: new Date(2020, 11, 27, 11, 0, 0),
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 27, 12, 0, 0),
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 27, 13, 0, 0),
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 27, 14, 0, 0),
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 27, 15, 0, 0),
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 27, 16, 0, 0),
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 27, 17, 0, 0),
+    });
+
+    await fakeAppointmentsRepository.create({
+      provider_id: 'user',
+      date: new Date(2020, 11, 28, 17, 0, 0),
     });
 
     const availability = await listProviderMonthAvailability.execute({
@@ -38,7 +78,7 @@ describe('ListProviders', () => {
       expect.arrayContaining([
         { day: 26, available: true },
         { day: 27, available: false },
-        { day: 28, available: false },
+        { day: 28, available: true },
         { day: 29, available: true },
       ]),
     );
