@@ -3,7 +3,7 @@
   "host": "localhost",
   "port": 5432,
   "username": "postgres",
-  "password": "xakv7f7u",
+  "password": "jj1010aa",
   "database": "gobarber",
   "synchronize": true,
   "logging": false,
