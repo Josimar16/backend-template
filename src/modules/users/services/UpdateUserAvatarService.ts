@@ -22,14 +22,17 @@ class UpdateUserAvatarService {
 
     if (!user)
       throw new AppError('Only authenticated users can change avatar.', 401);
+    console.log(user);
 
     if (user.avatar) {
       await this.storageProvider.deleteFile(user.avatar);
     }
 
     const filename = await this.storageProvider.saveFile(avatarFilename);
+    console.log(filename);
 
     user.avatar = filename;
+    console.log(user.avatar, filename);
     await this.usersRepository.save(user);
 
     return user;

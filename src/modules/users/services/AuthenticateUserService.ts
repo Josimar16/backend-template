@@ -5,6 +5,7 @@ import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
+import User from '../infra/typeorm/entities/User';
 
 interface IRequest {
   email: string;
@@ -22,7 +23,7 @@ class AuthenticateUserService {
   public async execute({
     email,
     password,
-  }: IRequest): Promise<{ token: string }> {
+  }: IRequest): Promise<{ user: User; token: string }> {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) throw new AppError('Incorrect email/password combination.', 401);
@@ -42,7 +43,7 @@ class AuthenticateUserService {
       expiresIn,
     });
 
-    return { token };
+    return { user, token };
   }
 }
 export default AuthenticateUserService;
