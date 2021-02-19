@@ -10,7 +10,8 @@ import logoImg from '../../assets/logo.png';
 import Input from '../../components/input';
 import Button from '../../components/button';
 
-import { Container, Content, Background } from './styles';
+import { Container, Content, AnimationContainer, Background } from './styles';
+import { Link } from 'react-router-dom';
 
 const SignUp: React.FC = () => {
 
@@ -38,18 +39,20 @@ const SignUp: React.FC = () => {
     <Container>
       <Background />
       <Content>
-        <img src={logoImg} alt="LigPop" />
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <h1>Faça seu cadastro</h1>
-          <Input name="name" icon={FiUser} placeholder="Nome completo" />
-          <Input name="email" icon={FiMail} placeholder="E-mail" />
-          <Input name="password" icon={FiLock} type="password" placeholder="Senha" />
-          <Button type="submit">Cadastrar</Button>
-        </Form>
-        <a href="new">
-          <FiArrowLeft />
+        <AnimationContainer>
+          <img src={logoImg} alt="LigPop" />
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <h1>Faça seu cadastro</h1>
+            <Input name="name" icon={FiUser} placeholder="Nome completo" />
+            <Input name="email" icon={FiMail} placeholder="E-mail" />
+            <Input name="password" icon={FiLock} type="password" placeholder="Senha" />
+            <Button type="submit">Cadastrar</Button>
+          </Form>
+          <Link to="/">
+            <FiArrowLeft />
           Voltar para logon
-        </a>
+        </Link>
+        </AnimationContainer>
       </Content>
     </Container>
   );
