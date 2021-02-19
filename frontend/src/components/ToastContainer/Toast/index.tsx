@@ -19,13 +19,13 @@ const Toast: React.FC<ToastProps> = ({ message, style }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       removeToast(message.id);
-    }, 3000)
+    }, 5000)
     return () => {
       clearTimeout(timer);
     };
   }, [removeToast, message.id]);
   return (
-    <Container type={message.type} hasDescription={!!message.description} style={style}>
+    <Container type={message.type} hasDescription={Number(!!message.description)} style={style}>
       {icons[message.type || 'info']}
       <div>
         <strong>{message.title}</strong>
