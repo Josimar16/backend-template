@@ -21,6 +21,7 @@ import logoImg from '../../assets/logo.png';
 import { FiClock, FiPower } from 'react-icons/fi';
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
+import { Link } from 'react-router-dom';
 
 interface MonthAvailabilityItem {
   day: number;
@@ -135,10 +136,12 @@ const Dashboard: React.FC = () => {
           <img src={logoImg} alt="GoBarber" />
 
           <Profile>
-            <img src={user.avatar_url || "https://avatars.githubusercontent.com/u/49077388?s=460&u=ec9520ac11646eea256440b5db57ede4af4bf6be&v=4"} alt={user.name} />
+            <img src={user.avatar_url } alt={user.name} />
             <div>
               <span>Bem-vindo,</span>
-              <strong>{user.name}</strong>
+              <Link to="/profile">
+                <strong>{user.name}</strong>
+              </Link>
             </div>
           </Profile>
 
@@ -159,7 +162,7 @@ const Dashboard: React.FC = () => {
           {isToday(selectedDate) && nextAppointment && (<NextAppointment>
             <strong>Agendamento a seguir</strong>
             <div>
-              <img src={nextAppointment.user.avatar_url || "https://avatars.githubusercontent.com/u/49077388?s=460&u=ec9520ac11646eea256440b5db57ede4af4bf6be&v=4"} alt={nextAppointment.user.name} />
+              <img src={nextAppointment.user.avatar_url } alt={nextAppointment.user.name} />
 
               <strong>{nextAppointment.user.name}</strong>
               <span>
@@ -184,7 +187,7 @@ const Dashboard: React.FC = () => {
                 </span>
 
                 <div>
-                  <img src={appointment.user.avatar_url || "https://avatars.githubusercontent.com/u/49077388?s=460&u=ec9520ac11646eea256440b5db57ede4af4bf6be"} alt={appointment.user.name} />
+                  <img src={appointment.user.avatar_url } alt={appointment.user.name} />
                   <strong>{appointment.user.name}</strong>
                 </div>
               </Appointment>
@@ -206,7 +209,7 @@ const Dashboard: React.FC = () => {
                 </span>
 
                 <div>
-                  <img src={appointment.user.avatar_url || "https://avatars.githubusercontent.com/u/49077388?s=460&u=ec9520ac11646eea256440b5db57ede4af4bf6be"} alt={appointment.user.name} />
+                  <img src={appointment.user.avatar_url } alt={appointment.user.name} />
                   <strong>{appointment.user.name}</strong>
                 </div>
               </Appointment>
