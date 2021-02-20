@@ -1,9 +1,15 @@
 import React, {createContext, useCallback, useContext, useState} from 'react';
 import api from '../services/api'
 
+interface User {
+  id: string;
+  name: string;
+  avatar_url: string;
+}
+
 interface AuthState {
   token: string;
-  user: Object;
+  user: User;
 }
 
 interface SignInCredentials {
@@ -12,7 +18,7 @@ interface SignInCredentials {
 }
 
 interface AuthContextData {
-  user: Object;
+  user: User;
   signIn(credentials: SignInCredentials): Promise<void>
   signOut(): void
 }
@@ -24,12 +30,15 @@ const AuthProvider: React.FC = ({children}) => {
     const token = localStorage.getItem('@LigPop:token')
     const user = localStorage.getItem('@LigPop:user')
 
-    if (token && user) return {token, user: JSON.parse(user)}
+    if (token && user) {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+      return {token, user: JSON.parse(user)}
+    }
     return { } as AuthState
   })
 
   const signIn = useCallback(async ({email, password}: SignInCredentials) => {
-    const response = await api.post<{token: string, user: Object}>('sessions', {
+    const response = await api.post<{token: string, user: User}>('sessions', {
       email,
       password
     })
@@ -37,7 +46,9 @@ const AuthProvider: React.FC = ({children}) => {
     localStorage.setItem('@LigPop:token', token)
     localStorage.setItem('@LigPop:user', JSON.stringify(user))
 
-    setData({token, user})
+    api.defaults.headers.authorization = `Bearer ${token}`;
+
+    setData({token, user});
   }, [])
 
   const signOut = useCallback(() => {

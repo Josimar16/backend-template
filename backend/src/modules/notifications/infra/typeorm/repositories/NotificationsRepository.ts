@@ -19,6 +19,10 @@ export default class NotificationsRepository
       content,
       recipient_id,
     });
+    console.log({
+      content,
+      recipient_id,
+    });
     await this.ormRepository.save(notification);
     return notification;
   }

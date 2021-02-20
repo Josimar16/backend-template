@@ -69,6 +69,7 @@ class CreateAppointmentService {
         'yyyy-M-d',
       )}`,
     );
+
     return appointment;
   }
 }
