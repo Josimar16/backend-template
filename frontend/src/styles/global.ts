@@ -9,8 +9,10 @@ export default createGlobalStyle`
     --color-secundary: #FF9000;
     --color-complement: #3E3B47;
     --color-text-complement: #999591;
-    --color-button-text: #F4EDE8;
+    --color-text: #F4EDE8;
+    --color-text-base: #FFFFFF;
     --color-calendar-week: #666360;
+    --color-disabled: #232129;
     --color-toast-success: #2E656A;
     --color-toast-success-light: #E6FFFA;
     --color-toast-info: #3172B7;

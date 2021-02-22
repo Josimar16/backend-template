@@ -8,12 +8,12 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: #232129;
+  background: var(--color-disabled);
   border-radius: 10px;
   padding: 16px;
   width: 100%;
 
-  border: 2px solid #232129;
+  border: 2px solid var(--color-disabled);
   color: #666368;
 
   display: flex;
@@ -24,26 +24,26 @@ export const Container = styled.div<ContainerProps>`
   }
 
   ${props => props.isErrored && css `
-    border-color: #E53030;
+    border-color: var(--color-error);
   `}
 
   ${props => props.isFocused && css `
-    color: #FF9000;
-    border-color: #FF9000;
+    color: var(--color-secundary);
+    border-color: var(--color-secundary);
   `}
 
   ${props => props.isField && css `
-    color: #FF9000;
+    color: var(--color-secundary);
   `}
 
   input {
     flex: 1;
     background: transparent;
     border: 0;
-    color: #F4EDE8;
+    color: var(--color-text);
 
     &::placeholder {
-      color: #666368;
+      color: var(--color-calendar-week);
     }
   }
   svg {
@@ -58,11 +58,11 @@ export const Error = styled(Tooltip)`
     margin: 0;
   }
   span {
-    background: #C53030;
-    color: #FFF;
+    background: var(--color-toast-error);
+    color: var(--color-text-base);
 
     &::before {
-      border-color: #C53030 transparent;
+      border-color: var(--color-toast-error) transparent;
     }
   }
 `;

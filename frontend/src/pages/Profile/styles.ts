@@ -4,7 +4,7 @@ import { shade } from 'polished'
 export const Container = styled.div`
   > header {
     height: 144px;
-    background: #28262e;
+    background: var(--color-primary);
 
     display: flex;
     align-items: center;
@@ -14,7 +14,7 @@ export const Container = styled.div`
       max-width: 1120px;
       margin: 0 auto;
       svg {
-        color: #999591;
+        color: var(--color-text-complement);
         width: 24px;
         height: 24px;
       }
@@ -64,7 +64,7 @@ export const AnimationContainer = styled.div`
       text-align: left; 
     }
     a {
-      color: #F4EDE8;
+      color: var(--color-text);
       display: block;
       margin-top: 24px;
       text-decoration: none;
@@ -95,7 +95,7 @@ export const AvatarInput = styled.div`
     position: absolute;
     width: 48px;
     height: 48px;
-    background: #ff9000;
+    background: var(--color-secundary);
     border-radius: 50%;
     cursor: pointer;
     right: 0;
@@ -113,7 +113,7 @@ export const AvatarInput = styled.div`
     svg {
       width: 20px;
       height: 20px;
-      color: #312e38;
+      color: var(--color-background);
     }
 
     &:hover {
